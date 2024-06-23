@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { ControllerTickets } from "./controller";
+import { ServiceTickets } from "../services/tickets.service";
 
 
 export class RoutesTickets {
@@ -8,7 +9,8 @@ export class RoutesTickets {
 
         const router = Router()
 
-        const controller = new ControllerTickets()
+        const service = new ServiceTickets()
+        const controller = new ControllerTickets(service)
 
         router
             .get('/', controller.GetTickets)
